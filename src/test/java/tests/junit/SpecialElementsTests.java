@@ -1,4 +1,4 @@
-package testPackage;
+package tests.junit;
 
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;

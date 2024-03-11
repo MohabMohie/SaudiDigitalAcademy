@@ -1,13 +1,9 @@
-package testPackage;
+package tests.junit;
 
-import org.apache.commons.lang3.reflect.FieldUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.util.Set;
 
 public class WindowTests extends Tests{
