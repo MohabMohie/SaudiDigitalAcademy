@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Demo Suite" verbose="1">
+    <test name="Demo Test">
+        <classes>
+            <class name="tests.testng.BasicGoogleTests">
+                <parameter name="search-query" value="Clarusway"/>
+                <methods>
+                    <exclude name="assertGoogleLogoExists"/>
+                </methods>
+            </class>
+            <class name="tests.testng.SoftAssertionsTests"/>
+        </classes>
+    </test>
+</suite>

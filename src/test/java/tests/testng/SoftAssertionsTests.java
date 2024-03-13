@@ -6,7 +6,13 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class SoftAssertionsTests extends Tests{
-
+    /**
+     * Breakout session: 30 minutes
+     * navigate to https://practicetestautomation.com/practice-test-login/
+     * login using "Username": "student" + "Password": "Password123" (using testdata.json is optional)
+     * check that the url is correct "https://practicetestautomation.com/logged-in-successfully/"
+     * check the successful login, congratulations message, and logout button are displayed
+     */
     @Test(testName = "Basic Soft Assertions Test", description = "Given I am on the practice login page, When I input valid credentials, Then I am logged in successfully.")
     public void softAssertionsTest() {
         bot.navigate("https://practicetestautomation.com/practice-test-login/");
