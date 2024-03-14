@@ -3,6 +3,7 @@ package tests.testng;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -19,7 +20,7 @@ public class BasicGoogleTests extends Tests{
      */
     @Parameters({ "search-query" })
     @Test(groups = {"sanityCheck", "guiTests"})
-    public void quickGoogleSearch(String searchQuery){
+    public void quickGoogleSearch(@Optional("Selenium WebDriver") String searchQuery){
         bot.navigate("https://www.google.com/");
         By searchInput = By.id("APjFqb");
 //        bot.type(searchInput, "Selenium WebDriver" + Keys.RETURN);
