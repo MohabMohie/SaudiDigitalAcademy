@@ -5,7 +5,8 @@ import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
+
+import java.util.concurrent.atomic.AtomicReference;
 
 public class BasicGoogleTests extends Tests{
     /**
@@ -22,9 +23,16 @@ public class BasicGoogleTests extends Tests{
         bot.navigate("https://www.google.com/");
         By searchInput = By.id("APjFqb");
 //        bot.type(searchInput, "Selenium WebDriver" + Keys.RETURN);
+//        var searchQuery = (String) testData.get("searchQuery");
         bot.type(searchInput, searchQuery + Keys.RETURN);
         By resultStatsLabel = By.id("result-stats");
-        Assert.assertNotEquals(driver.findElement(resultStatsLabel).getText(), "");
+
+        AtomicReference<String> actualText = new AtomicReference<>("");
+        wait.until(f -> {
+            actualText.set(driver.findElement(resultStatsLabel).getText());
+            return true;
+        });
+        Assert.assertNotEquals(actualText, "");
     }
 
     @Test(testName = "Check Google Logo Exists", description = "Given I am on the Google homepage, Then the Google logo should be displayed")
