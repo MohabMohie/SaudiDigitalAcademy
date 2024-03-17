@@ -1,6 +1,7 @@
 package tests.testng;
 
 import engine.ActionsBot;
+import engine.CustomListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.Configurator;
@@ -12,6 +13,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.support.events.EventFiringDecorator;
+import org.openqa.selenium.support.events.WebDriverListener;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
@@ -46,6 +49,8 @@ public abstract class Tests {
             case "safari" -> driver = new SafariDriver();
             case "edge" -> driver = new EdgeDriver();
         }
+
+        driver = new EventFiringDecorator(new CustomListener()).decorate(driver);
 
         driver.manage().window().maximize();
 
