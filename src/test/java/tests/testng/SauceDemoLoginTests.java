@@ -1,8 +1,8 @@
 package tests.testng;
 
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.inventory.Inventory;
 import pages.login.Login;
 
 public class SauceDemoLoginTests extends Tests{
@@ -18,8 +18,7 @@ public class SauceDemoLoginTests extends Tests{
         Login loginPage = new Login(driver, bot);
         loginPage.goTo();
         loginPage.login("standard_user", "secret_sauce");
-        // redirect to another page and hence I should handle synchronization
-        By productsLabel = By.className("product_label");
-        Assert.assertEquals(driver.findElement(productsLabel).getText(), "Products");
+        Inventory inventoryPage = new Inventory(driver, bot);
+        Assert.assertEquals(inventoryPage.readHeader(), "Products");
     }
 }

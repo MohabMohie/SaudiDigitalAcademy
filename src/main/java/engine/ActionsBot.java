@@ -8,6 +8,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
 
+import java.util.concurrent.atomic.AtomicReference;
+
 public class ActionsBot {
     private final WebDriver driver;
     private final Wait<WebDriver> wait;
@@ -33,6 +35,17 @@ public class ActionsBot {
             driver.findElement(locator).sendKeys(text);
             return true;
         });
+    }
+
+    @Step
+    public String getText(By locator){
+        logger.info("Reading text from: "+locator);
+        AtomicReference<String> actualText = new AtomicReference<>("");
+        wait.until(f -> {
+            actualText.set(driver.findElement(locator).getText());
+            return true;
+        });
+        return actualText.get();
     }
 
     @Step
