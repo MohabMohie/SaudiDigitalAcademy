@@ -2,8 +2,8 @@ package tests.testng;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.inventory.Inventory;
-import pages.login.Login;
+import pages.sauceDemo.Inventory;
+import pages.sauceDemo.Login;
 
 public class SauceDemoLoginTests extends Tests{
     /**
