@@ -3,5 +3,12 @@
   "SoftAssertionsTestData": {
     "Username": "student",
     "Password": "Password123"
+  },
+  "expandTesting": {
+    "Username": "practice",
+    "Password": "SuperSecretPassword!",
+    "ExpectedSuccessMessage": "You logged into a secure area!",
+    "WrongPassword": "NONONONONO",
+    "ExpectedFailureMessage": "Your password is invalid!"
   }
 }
