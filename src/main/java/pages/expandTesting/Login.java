@@ -1,12 +1,13 @@
 package pages.expandTesting;
 
 import engine.ActionsBot;
+import engine.PropertiesReader;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class Login extends Pages{
-    private final String url = "https://practice.expandtesting.com/login";
+    private final String url = PropertiesReader.props.getProperty("baseUrl") + "login";
     private final By usernameInput = By.id("username"); //practice
     private final By passwordInput = By.id("password"); //SuperSecretPassword!
     private final By submitButton = By.cssSelector("button[type='submit']");
