@@ -2,6 +2,7 @@ package tests.testng.expandTesting;
 
 import org.json.simple.JSONObject;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.expandTesting.Login;
 import tests.testng.Tests;
@@ -16,21 +17,36 @@ public class FluentPomPatternPomTests extends Tests {
      */
     @Test(description = "Successful Login")
     public void loginTest1(){
-        JSONObject testCaseData = (JSONObject) testData.get("expandTesting");
         String actualText = new Login(driver,bot)
                 .goTo()
                 .successfulLogin((String) testCaseData.get("Username"), (String) testCaseData.get("Password"))
                 .readSuccessMessage();
         Assert.assertEquals(actualText, (String) testCaseData.get("ExpectedSuccessMessage"));
+        logger.info("Login was successful as expected!");
     }
 
-    @Test(description = "Failed Login")
+    @Test(description = "Failed Login - Wrong Password")
     public void loginTest2(){
-        JSONObject testCaseData = (JSONObject) testData.get("expandTesting");
         String actualText = new Login(driver,bot)
                 .goTo()
                 .failedLogin((String) testCaseData.get("Username"), (String) testCaseData.get("WrongPassword"))
                 .readFailureMessage();
-        Assert.assertEquals(actualText, (String) testCaseData.get("ExpectedFailureMessage"));
+        Assert.assertEquals(actualText, (String) testCaseData.get("ExpectedFailureMessagePassword"));
+        logger.info("Login failed as expected!");
+    }
+
+    @Test(description = "Failed Login - Wrong Username")
+    public void loginTest3(){
+        String actualText = new Login(driver,bot)
+                .goTo()
+                .failedLogin((String) testCaseData.get("WrongUsername"), (String) testCaseData.get("Password"))
+                .readFailureMessage();
+        Assert.assertEquals(actualText, (String) testCaseData.get("ExpectedFailureMessageUsername"));
+        logger.info("Login failed as expected!");
+    }
+
+    @BeforeClass
+    public void initializeTestDataReader(){
+        testCaseData = (JSONObject) testData.get("expandTesting");
     }
 }
