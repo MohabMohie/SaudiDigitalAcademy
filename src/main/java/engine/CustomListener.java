@@ -1,6 +1,7 @@
 package engine;
 
 import io.qameta.allure.Allure;
+import io.qameta.allure.Step;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverListener;
@@ -21,6 +22,7 @@ public class CustomListener implements ITestListener, WebDriverListener {
         System.out.println(result.getInstanceName() + "." + result.getName() + " PASSED");
     }
 
+    @Step ("Capturing screenshot evidence")
     public void afterGetText(WebElement element, String result) {
         try (InputStream is = Files.newInputStream(element.getScreenshotAs(OutputType.FILE).toPath())) {
             Allure.attachment("image.png", is);
