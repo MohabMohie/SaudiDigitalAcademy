@@ -9,6 +9,8 @@
     "Password": "SuperSecretPassword!",
     "ExpectedSuccessMessage": "You logged into a secure area!",
     "WrongPassword": "NONONONONO",
-    "ExpectedFailureMessage": "Your password is invalid!"
+    "ExpectedFailureMessagePassword": "Your password is invalid!",
+    "WrongUsername": "NONONONONO",
+    "ExpectedFailureMessageUsername": "Your username is invalid!"
   }
 }
